@@ -44,5 +44,22 @@ You don't even need to solder anything most likely. I was able to hold the pins 
 
 Here is how it looks in HomeAssistant:
 
-![result](https://snaps.screensnapr.io/87e1c594199be79458be93003644f0)
+![image](https://github.com/RobertD502/petlibro-esphome/assets/52541649/c34f495e-b0ef-4df2-bb2d-ef614b902c97)
 
+
+## Setting Water Level
+
+**First time setup:**
+
+1) With the device powered on and the pump `switch` set to off, fill the water level to the `Min` marker.
+2) Place the upper-assembly back on the water fountain.
+3) Press the `Set Min Water Level` button to record the minimum water level.
+4) Remove the upper-assembly and fill the water to the `Max` line.
+5) Secure the upper-assembly to the water fountain and set the pump `switch` to on.
+6) Press the `Set Max Water Level` button to record the maximum water level.
+
+> [!Tip]
+> When it is time to refill the water fountain, if you don't intend to fill the water fountain to precisely the `Max` fill line, simply press the `Set Max Water Level` button after you have added the desired amount of water.
+
+> [!Tip]
+> If you don't want to use the Max and Min buttons to set the max and min water levels, you may manually enter the desired water level values using the `Max Water level` and `Min Water level` `number` entities (use the `Internal Water Level` sensor for reference).
