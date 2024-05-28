@@ -68,6 +68,7 @@ globals:
 number:
   - platform: template
     name: "Min Water level"
+    id: min_water_num
     optimistic: true
     min_value: -1_000_000_000
     max_value: 1_000_000_000
@@ -82,6 +83,7 @@ number:
 
   - platform: template
     name: "Max Water level"
+    id: max_water_num
     optimistic: true
     min_value: -1_000_000_000
     max_value: 1_000_000_000
@@ -144,7 +146,7 @@ sensor:
     accuracy_decimals: 1
     lambda: |-
         if(id(water_level).state >= id(max_water_level)) {
-          return 0;
+          return 100;
         }
 
         if(id(water_level).state <= id(min_water_level)) {
@@ -218,3 +220,20 @@ binary_sensor:
             } else {
                id(red_led_output).turn_off();
             }
+
+button:
+  - platform: template
+    name: "Set Min Water Level"
+    on_press:
+      then:
+        - number.set:
+            id: min_water_num
+            value: !lambda 'return id(water_level).state;'
+
+  - platform: template
+    name: "Set Max Water Level"
+    on_press:
+      then:
+        - number.set:
+            id: max_water_num
+            value: !lambda 'return id(water_level).state;'
